@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
+import Nuke
 class TrackCell: UITableViewCell {
-
+    @IBOutlet weak var trackImageView: UIImageView!
+    
+    @IBOutlet weak var trackNameLabel: UILabel!
+    @IBOutlet weak var artistName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +22,12 @@ class TrackCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    /// Configures the cell's UI for the given track.
+    func configure(with track: Track) {
+        trackNameLabel.text = track.trackName
+        artistName.text = track.artistName
 
+        // Load image async via Nuke library image loading helper method
+        Nuke.loadImage(with: track.artworkUrl100, into: trackImageView)
+    }
 }
