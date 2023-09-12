@@ -26,3 +26,8 @@ func formattedTrackDuration(with milliseconds: Int) -> String {
         return "\(minutes):0\(truncatedSeconds)"
     }
 }
+struct Track {
+    let trackName: String
+    let artistName: String
+    let artworkUrl100: URL
+}
